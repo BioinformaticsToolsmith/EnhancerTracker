@@ -1,7 +1,7 @@
 # EnhancerSniffer
 "Enhancer Sniffer is a computation tool for assessing the similarity among three sequences with respect to their enhancer activites." This repository contains multiple notebooks and scripts in Python that are used for our tool. EnhancerSniffer uses an ensemble of deep convolutional neural network classifiers. These classifiers are trained on the FANTOM5 Project dataset (transcribed human enhancers). 
 
-EnhancerSniffer utilizes a processed FANTOM5 dataset and four datasets that are sampled from the human genome (assembly HG38): LR, LNR, LGR, LGNR. 
+EnhancerSniffer utilizes a processed FANTOM5 dataset (Enhancer) and four datasets that are sampled from the human genome (assembly HG38): LR, LNR, LGR, LGNR. 
 
 ## Files
 
