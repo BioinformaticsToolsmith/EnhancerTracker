@@ -78,7 +78,7 @@ Download human genome dataset ...
 
 Download Red (Girgis, H.Z. Red: an intelligent, rapid, accurate tool for detecting repeats de-novo on the genomic scale. BMC Bioinformatics 16, 227 (2015). https://doi.org/10.1186/s12859-015-0654-5)
 
-## Steps for EnhancerSniffer: 
+## Steps: 
 1. Store FANTOM5 dataset in Data/FANTOM as F5.hg38.enhancers.expression.usage.matrix
    
 2. Store human genome dataset in Data/HG38 as HG38.fa
