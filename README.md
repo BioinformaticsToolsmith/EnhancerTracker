@@ -4,10 +4,13 @@
 EnhancerSniffer utilizes a processed FANTOM5 dataset and four datasets that are sampled from the human genome (assembly HG38): LR, LNR, LGR, LGNR. 
 
 ## Files
+
+create_dir.sh
+
+Creates the multiple directories that are required for running EnhancerSniffer.
 FantomData.ipynb:
 
 Clean data of FANTOM5 depending on length of sequence wanted and split into separate training, validation, and testing datasets.
-
 
 CreateControls.ipynb:
 
@@ -78,49 +81,51 @@ Download Red (Girgis, H.Z. Red: an intelligent, rapid, accurate tool for detecti
 1. Store FANTOM5 dataset in Data/FANTOM as F5.hg38.enhancers.expression.usage.matrix
    
 2. Store human genome dataset in Data/HG38 as HG38.fa
+   
+3. Run create_dir.sh
 
 Ensure that the following directories exist beforehand: Data/HG38/Scaffolds and Data/HG38/Chromosomes
 
-3. Run ProcessHG38.ipynb. 
+4. Run ProcessHG38.ipynb. 
 
 Ensure the directory Data/RED_HG38/ exists beforehand.
 
-4. Run Red on the following directory: Data/HG38/Chromosomes and Data/HG38/Scaffolds. (Use Red as so: red -gnm Data/HG38/Chromosomes/ -dir Data/HG38/Scaffolds/ -rpt Data/RED_HG38/ -frm 2)
+5. Run Red on the following directory: Data/HG38/Chromosomes and Data/HG38/Scaffolds. (Use Red as so: red -gnm Data/HG38/Chromosomes/ -dir Data/HG38/Scaffolds/ -rpt Data/RED_HG38/ -frm 2)
 
-5. Run FantomData.ipynb
+6. Run FantomData.ipynb
 
 Ensure the following directories exists beforehand: Data/Datasets, Data/Datasets/LR, Data/Datasets/LNR, Data/Datasets/LGR, and Data/Datasets/LGNR
 
-6. Run CreateControls.ipynb
+7. Run CreateControls.ipynb
 
-7. Run SplitControlsToSets.ipynb
+8. Run SplitControlsToSets.ipynb
 
-8. Run FindSimilarEnhancers.ipynb
+9. Run FindSimilarEnhancers.ipynb
    
 Ensure that the following directory exists beforehand: Data/Datasets/Enhancer
 
-9. Run CreateEnhancerOnlyDataset.ipynb
+10. Run CreateEnhancerOnlyDataset.ipynb
 
-10. Run CreateControlDatasets.ipynb
+11. Run CreateControlDatasets.ipynb
 
 Ensure the following directory exists beforehand: Data/Datasets/All
 
-11. Run CombineControls.ipynb
+12. Run CombineControls.ipynb
 
-12. Run CreateCompositeDataset.ipynb
+13. Run CreateCompositeDataset.ipynb
 
-13. Run FastaReverseComplement.ipynb
+14. Run FastaReverseComplement.ipynb
     
 Ensure the following directory exists beforehand: Data/Datasets/All/Models
 
-14. Run Ensemble.ipynb
+15. Run Ensemble.ipynb
     
 ## Extra Steps to Test:
-15. Run MonteCarloDropoutEnsemble.ipynb
+16. Run MonteCarloDropoutEnsemble.ipynb
 
-16. Run HierarchicalClassifier.ipynb
+17. Run HierarchicalClassifier.ipynb
     
 Ensure the following directories exists beforehand: Data/Triplets, Data/GNM, Data/GNM/60, Data/GNM/70, Data/GNM/80, and Data/GNM/90
 
-17. Run TripletConfidenceGenerator.ipynb (used for Ensemble.ipynb)
+18. Run TripletConfidenceGenerator.ipynb (used for Ensemble.ipynb)
 
