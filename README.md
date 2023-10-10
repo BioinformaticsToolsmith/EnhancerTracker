@@ -8,6 +8,7 @@ EnhancerSniffer utilizes a processed FANTOM5 dataset and four datasets that are 
 create_dir.sh
 
 Creates the multiple directories that are required for running EnhancerSniffer.
+
 FantomData.ipynb:
 
 Clean data of FANTOM5 depending on length of sequence wanted and split into separate training, validation, and testing datasets.
