@@ -11,7 +11,7 @@ Clean data of FANTOM5 depending on length of sequence wanted and split into sepa
 
 Ensure the following directories exists beforehand: Data/Datasets, Data/Datasets/LR, Data/Datasets/LNR, Data/Datasets/LGR, and Data/Datasets/LGNR
 
--CreateControls.ipynb:
+CreateControls.ipynb:
 Create control datasets that contain random sequences: LR, LNR, LGR, and LGNR.
 
 SplitControlsToSets.ipynb:
@@ -59,12 +59,15 @@ An interactive jupyter notebook that selects similar triplets based on confidenc
 
 ## Requirements
 Download FANTOM5 dataset https://zenodo.org/record/556775
+
 Download human genome dataset ... 
+
 Download Red (Girgis, H.Z. Red: an intelligent, rapid, accurate tool for detecting repeats de-novo on the genomic scale. BMC Bioinformatics 16, 227 (2015). https://doi.org/10.1186/s12859-015-0654-5)
 
 ## Steps for EnhancerSniffer: 
 1. Store FANTOM5 dataset in Data/FANTOM as F5.hg38.enhancers.expression.usage.matrix
-2. Store human genome dataset in Data/HG38 as HG38.fa
+   
+3. Store human genome dataset in Data/HG38 as HG38.fa
 
 Ensure that the following directories exist beforehand: Data/HG38/Scaffolds and Data/HG38/Chromosomes
 3. Run ProcessHG38.ipynb. 
