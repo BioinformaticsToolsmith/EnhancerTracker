@@ -113,13 +113,14 @@ Ensure the following directory exists beforehand: Data/Datasets/All
     
 Ensure the following directory exists beforehand: Data/Datasets/All/Models
 
-15. Run Ensemble.ipynb
+14. Run Ensemble.ipynb
+    
+## Extra Steps to Test:
+15. Run MonteCarloDropoutEnsemble.ipynb
 
-16. Run MonteCarloDropoutEnsemble.ipynb
-
-17. Run HierarchicalClassifier.ipynb
+16. Run HierarchicalClassifier.ipynb
     
 Ensure the following directories exists beforehand: Data/Triplets, Data/GNM, Data/GNM/60, Data/GNM/70, Data/GNM/80, and Data/GNM/90
 
-19. Run TripletConfidenceGenerator.ipynb (used for Ensemble.ipynb)
+17. Run TripletConfidenceGenerator.ipynb (used for Ensemble.ipynb)
 
