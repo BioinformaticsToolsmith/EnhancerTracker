@@ -1,13 +1,13 @@
-# EnhancerSniffer
-EnhancerSniffer is a computation tool for assessing the similarity among three sequences taking into account their enhancer activities. This repository contains multiple notebooks and scripts in Python that are used for our tool. EnhancerSniffer uses an ensemble of deep convolutional neural network classifiers. These classifiers are trained on the FANTOM5 Project dataset (transcribed human enhancers). 
+# EnhancerTracker
+EnhancerTracker is a computation tool for assessing the similarity among three sequences taking into account their enhancer activities. This repository contains multiple notebooks and scripts in Python that are used for our tool. EnhancerTracker uses an ensemble of deep convolutional neural network classifiers. These classifiers are trained on the FANTOM5 Project dataset (transcribed human enhancers). 
 
-EnhancerSniffer utilizes a processed FANTOM5 dataset (Enhancer) and four datasets that are sampled from the human genome (assembly HG38): LR, LNR, LGR, LGNR. 
+EnhancerTracker utilizes a processed FANTOM5 dataset (Enhancer) and four datasets that are sampled from the human genome (assembly HG38): LR, LNR, LGR, LGNR. 
 
 ## Files
 
 create_dir.sh
 
-Creates the multiple directories that are required for running EnhancerSniffer.
+Creates the multiple directories that are required for running EnhancerTracker.
 
 FantomData.ipynb:
 
