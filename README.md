@@ -172,17 +172,37 @@ Ensure the following directories exists beforehand: Data/Triplets, Data/GNM, Dat
 
 Ensure the same directories generated from TripletConfidenceGenerator.ipynb are named correctly in EnhancerTracker_10000.py. 
 
+Ensure all the following directories exist beforehand: Out_12_12_2023_10000, Out_12_12_2023_10000/60_0, Out_12_12_2023_10000/60_1, Out_12_12_2023_10000/60_2, Out_12_12_2023_10000/60_3, Out_12_12_2023_10000/60_4, Out_12_12_2023_10000/60_5, Out_12_12_2023_10000/70_0, etc. 
+
 19. Run EnhancerTracker_10000.py: python3 EnhancerTracker_10000.py 
 
-20. Run plotmulticonfidence_10000.py and feed it a triplet directory that you want to see: python3 plotmulticonfidence_10000.py Out_12_12_2023_10000/80_1
+20. Run plotmulticonfidence_10000.py and give it a triplet directory that you want to see: python3 plotmulticonfidence_10000.py Out_12_12_2023_10000/80_1
+
+### For Case Study: 
+
+Ensure that the following directories exist beforehand: Intersected_enhancers_10000, Intersected_enhancers_10000/60_0, Intersected_enhancers_10000_60_1, etc.
+
+21. Run generate_overlap_seq_10000.py as so: python3 generate_overlap_seq_permutations.py ./Out_12_12_2023 ../Data/FANTOM/F5.hg38.enhancers.bed ./Permutated_intersected_enhancers_10000
 
 ## For Non-Permutated Triplets (100,000 bp region):
 
 Ensure the same directories generated from TripletConfidenceGenerator.ipynb are named correctly in EnhancerTracker_100000.py. 
 
+Ensure all the following directories exist beforehand: Out_12_12_2023_100000, Out_12_12_2023_100000/60_0, Out_12_12_2023_100000/60_1, Out_12_12_2023_100000/60_2, Out_12_12_2023_100000/60_3, Out_12_12_2023_100000/60_4, Out_12_12_2023_100000/60_5, Out_12_12_2023_100000/70_0, etc. 
+
 19. Run EnhancerTracker_100000.py: python3 EnhancerTracker_100000.py 
 
-20. Run plotmulticonfidence_100000.py and feed it a triplet directory that you want to see: python3 plotmulticonfidence_100000.py Out_12_12_2023_100000/80_1
+20. Run plotmulticonfidence_100000.py and give it a triplet directory that you want to see: python3 plotmulticonfidence_100000.py Out_12_12_2023_100000/80_1
+
+### For Case Study: 
+
+Ensure that the following directories exist beforehand: Intersected_enhancers_100000, Intersected_enhancers_100000/60_0, Intersected_enhancers_100000_60_1, etc.
+
+21. Run generate_overlap_seq_100000.py as so: python3 generate_overlap_seq_permutations.py ./Out_12_12_2023 ../Data/FANTOM/F5.hg38.enhancers.bed ./Permutated_intersected_enhancers_100000
+
+
+
+
 
 
 
