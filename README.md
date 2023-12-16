@@ -70,6 +70,42 @@ The secondary output determines whether a sequence is an enhancer.
 TripletConfidenceGenerator.ipynb:
 
 An interactive jupyter notebook that selects similar triplets based on confidence and saves to FASTA files.
+Outputs triplet permutations or non-permutated triplets.
+A region of two different sizes from the human genome are centered around the third part of a triplet.
+Triplet permutations use a 10,000 bp region and non-permutated triplets use a 100,000 bp region.
+
+## Tool
+
+EnhancerTrackerTool Directory:
+Contains the necessary files to run our tool EnhancerTracker.
+
+### Triplet Permutations (10,000 bp region):
+
+EnhancerTracker_10000.py:
+Our tool EnhancerTracker.
+Takes in a triplet permutation generated from TripletConfidenceGenerator.ipynb. 
+Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
+
+plotmulticonfidence_10000.py:
+Generates a graph of graphs from the predicted enhancer regions and its window size generated from EnhancerTracker using a 10,000 bp region.
+
+generate_overlap_seq_10000.py:
+Takes the enhancer regions from EnhancerTracker and intersects them with the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
+Used for our case study. 
+
+### Non-Permutated Triplets (100,000 bp region):
+
+EnhancerTracker_100000.py:
+Our tool EnhancerTracker.
+Takes in a non-permutated triplet generated from TripletConfidenceGenerator.ipynb.
+Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
+
+plotmulticonfidence_100000.py:
+Generates a graph of graphs from the predicted enhancer regions and its window size generated from EnhancerTracker using a 100,000 bp region.
+
+generate_overlap_seq_100000.py:
+Takes the enhancer regions from EnhancerTracker and intersects them with the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
+Used for our case stufy. 
 
 ## Requirements
 Download FANTOM5 dataset https://zenodo.org/record/556775
@@ -77,6 +113,8 @@ Download FANTOM5 dataset https://zenodo.org/record/556775
 Download human genome dataset ... 
 
 Download Red (Girgis, H.Z. Red: an intelligent, rapid, accurate tool for detecting repeats de-novo on the genomic scale. BMC Bioinformatics 16, 227 (2015). https://doi.org/10.1186/s12859-015-0654-5)
+
+Download BEDtools (Quinlan, A. R., & Hall, I. M. (2010). BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics, 26(6), 841-842.) 
 
 ## Steps: 
 1. Store FANTOM5 dataset in Data/FANTOM as F5.hg38.enhancers.expression.usage.matrix
@@ -128,5 +166,27 @@ Ensure the following directory exists beforehand: Data/Datasets/All/Models
     
 Ensure the following directories exists beforehand: Data/Triplets, Data/GNM, Data/GNM/60, Data/GNM/70, Data/GNM/80, and Data/GNM/90
 
-18. Run TripletConfidenceGenerator.ipynb (used for Ensemble.ipynb)
+18. Run TripletConfidenceGenerator.ipynb and generate either triplet permutations or non-permutated triplets (used for Ensemble.ipynb).
+
+## Tool:
+
+## For Triplet Permutations (10,000 bp region):
+
+Ensure the same directories generated from TripletConfidenceGenerator.ipynb are named correctly in EnhancerTracker_10000.py. 
+
+19. Run EnhancerTracker_10000.py: python3 EnhancerTracker_10000.py 
+
+20. Run plotmulticonfidence_10000.py and feed it a triplet directory that you want to see: python3 plotmulticonfidence_10000.py Out_12_12_2023_10000/80_1
+
+## For Non-Permutated Triplets (100,000 bp region):
+
+Ensure the same directories generated from TripletConfidenceGenerator.ipynb are named correctly in EnhancerTracker_100000.py. 
+
+19. Run EnhancerTracker_100000.py: python3 EnhancerTracker_100000.py 
+
+20. Run plotmulticonfidence_100000.py and feed it a triplet directory that you want to see: python3 plotmulticonfidence_100000.py Out_12_12_2023_100000/80_1
+
+
+
+
 
