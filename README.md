@@ -88,7 +88,7 @@ Outputs predicted enhancer regions, confidence scores for regions, and segment r
 Generates a graph of graphs from the predicted enhancer regions and its window size generated from EnhancerTracker using a 10,000 bp region.
 
 -generate_overlap_seq_10000.py:
-Takes the enhancer regions from EnhancerTracker and intersects them with the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
+Takes the enhancer regions from EnhancerTracker and subtracts them from the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
 Used for our case study. 
 
 ### Non-Permutated Triplets (100,000 bp region):
@@ -102,7 +102,7 @@ Outputs predicted enhancer regions, confidence scores for regions, and segment r
 Generates a graph of graphs from the predicted enhancer regions and its window size generated from EnhancerTracker using a 100,000 bp region.
 
 -generate_overlap_seq_100000.py:
-Takes the enhancer regions from EnhancerTracker and intersects them with the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
+Takes the enhancer regions from EnhancerTracker and subtracts them from the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
 Used for our case stufy. 
 
 ## Requirements
