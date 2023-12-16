@@ -157,7 +157,6 @@ Ensure the following directory exists beforehand: Data/Datasets/All/Models
 
 15. Run Ensemble.ipynb
     
-## Extra Steps to Test:
 16. Run MonteCarloDropoutEnsemble.ipynb
 
 17. Run HierarchicalClassifier.ipynb
