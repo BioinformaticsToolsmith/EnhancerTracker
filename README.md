@@ -1,8 +1,6 @@
 # EnhancerTracker
 EnhancerTracker is a computation tool for assessing the similarity among three sequences taking into account their enhancer activities. This repository contains multiple notebooks and scripts in Python that are used for our tool. EnhancerTracker uses an ensemble of deep convolutional neural network classifiers. These classifiers are trained on the FANTOM5 Project dataset (transcribed human enhancers). 
 
-EnhancerTracker utilizes a processed FANTOM5 dataset (Enhancer) and four datasets that are sampled from the human genome (assembly HG38): LR, LNR, LGR, LGNR. 
-
 ## Files
 
 -create_dir.sh
