@@ -166,7 +166,7 @@ Ensure the following directories exists beforehand: Data/Triplets, Data/GNM, Dat
 
 18. Run TripletConfidenceGenerator.ipynb and generate either triplet permutations or non-permutated triplets (used for Ensemble.ipynb).
 
-## Tool:
+## Tool
 
 ## For Triplet Permutations (10,000 bp region):
 
