@@ -5,31 +5,31 @@ EnhancerTracker utilizes a processed FANTOM5 dataset (Enhancer) and four dataset
 
 ## Files
 
-create_dir.sh
+-create_dir.sh
 
 Creates the multiple directories that are required for running EnhancerTracker.
 
-FantomData.ipynb:
+-FantomData.ipynb:
 
 Clean data of FANTOM5 depending on length of sequence wanted and split into separate training, validation, and testing datasets.
 
-CreateControls.ipynb:
+-CreateControls.ipynb:
 
 Create control datasets that contain random sequences: LR, LNR, LGR, and LGNR.
 
-SplitControlsToSets.ipynb:
+-SplitControlsToSets.ipynb:
 
 Split each of the control datasets into separate training, validation, and testing datasets depending on the ratio needed.
 
-FindSimilarEnhancers.ipynb:
+-FindSimilarEnhancers.ipynb:
 
 Creates a pickle file containing an array of similar enhancers (active in same tissue) for each enhancer.
 
-CreateEnhancerOnlyDataset.ipynb:
+-CreateEnhancerOnlyDataset.ipynb:
 
 Creates an enhancer dataset taken from the processed FANTOM5 dataset.
 
-CreateControlDatasets.ipynb:
+-CreateControlDatasets.ipynb:
 
 Assembles sequence triplets for each of the control datasets (LR, LNR, LGR, and LGNR). 
 
@@ -37,37 +37,37 @@ CombineControls.ipynb:
 
 Combine all of the control datasets into one temporary dataset (not including enhancer dataset). 
 
-CreateCompositeDataset.ipynb:
+-CreateCompositeDataset.ipynb:
 
 Assembles sequence triplets of the composite dataset.
 File lengths were taken from the split datasets (training, validation, and training) in CombineControls.ipynb.
 Provide them as a list of tuples, where each tuple represents a mode of training, validation, or testing.
 It should be as so: [(train_1, train_2, train_3, train_4), (valid_1, valid_2, valid_3, valid_4), (test_1, test_2, test_3, test_4)]
 
-FastaReverseComplement.ipynb:
+-FastaReverseComplement.ipynb:
 
 Converts the fasta files (training, validation, and testing) of the composite dataset, control datasets, and the enhancer dataset to reverse complement, creating a new file for each. 
 
-Ensemble.ipynb:
+-Ensemble.ipynb:
 
 Takes in a dataset (either a control, enhancer, or composite dataset) and the three dataset splits (training, validation, and testing) of sequences, reverse sequences, similar triplets, and dissimilar triplets, depending on the dataset used.
 Creates a plot on the metrics on total models (determines the amount of models to use). 
 The Ensemble outputs a consensus between the models. 
 
-MonteCarloDropoutEnsemble.ipynb:
+-MonteCarloDropoutEnsemble.ipynb:
 
 Takes in a dataset (either a control, enhancer, or composite dataset) and the three dataset splits (training, validation, and testing) of sequences, reverse sequences, similar triplets, and dissimilar triplets, depending on the dataset used.
 Creates a plot on the metrics on total models (determines the amount of models to use).
 The Monte Carlo Dropout Ensemble outputs multiple different predictions on the same model. 
 
-HierarchicalClassifier.ipynb:
+-HierarchicalClassifier.ipynb:
 
 Takes in a dataset (either a control, enhancer, or composite dataset) and the three dataset splits (training, validation, and testing) of fantom matrixes, sequences, reverse sequences, similar triplets, and dissimilar triplets, depending on the dataset used.
 The hierarchical classifier has two outputs: the main output is a multi-label and the secondary output is a single-label.
 The main output determines which tissues a potential enhancer is active in. 
 The secondary output determines whether a sequence is an enhancer. 
 
-TripletConfidenceGenerator.ipynb:
+-TripletConfidenceGenerator.ipynb:
 
 An interactive jupyter notebook that selects similar triplets based on confidence and saves to FASTA files.
 Outputs triplet permutations or non-permutated triplets.
@@ -76,34 +76,34 @@ Triplet permutations use a 10,000 bp region and non-permutated triplets use a 10
 
 ## Tool
 
-EnhancerTrackerTool Directory:
+-EnhancerTrackerTool Directory:
 Contains the necessary files to run our tool EnhancerTracker.
 
 ### Triplet Permutations (10,000 bp region):
 
-EnhancerTracker_10000.py:
+-EnhancerTracker_10000.py:
 Our tool EnhancerTracker.
 Takes in a triplet permutation generated from TripletConfidenceGenerator.ipynb. 
 Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
 
-plotmulticonfidence_10000.py:
+-plotmulticonfidence_10000.py:
 Generates a graph of graphs from the predicted enhancer regions and its window size generated from EnhancerTracker using a 10,000 bp region.
 
-generate_overlap_seq_10000.py:
+-generate_overlap_seq_10000.py:
 Takes the enhancer regions from EnhancerTracker and intersects them with the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
 Used for our case study. 
 
 ### Non-Permutated Triplets (100,000 bp region):
 
-EnhancerTracker_100000.py:
+-EnhancerTracker_100000.py:
 Our tool EnhancerTracker.
 Takes in a non-permutated triplet generated from TripletConfidenceGenerator.ipynb.
 Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
 
-plotmulticonfidence_100000.py:
+-plotmulticonfidence_100000.py:
 Generates a graph of graphs from the predicted enhancer regions and its window size generated from EnhancerTracker using a 100,000 bp region.
 
-generate_overlap_seq_100000.py:
+-generate_overlap_seq_100000.py:
 Takes the enhancer regions from EnhancerTracker and intersects them with the FANTOM5 CAGE dataset using bedtools~(https://bedtools.readthedocs.io/en/latest/). 
 Used for our case stufy. 
 
