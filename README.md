@@ -1,4 +1,15 @@
 # EnhancerTracker
+
+Copyright (C) 2023 Rolando Garcia, Anthony B. Garza, Luis M. Solis, Mark S. Halfon, and Hani Z. Girgis
+
+Academic use: Affero General Public License version 1.
+
+Any restrictions to use for profit or non-academics: Alternative commercial license is required.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Please contact Dr. Hani Z. Girgis (hzgirgis@buffalo.edu) if you need more information.
+
 EnhancerTracker is a computation tool for assessing the similarity among three sequences taking into account their enhancer activities. This repository contains multiple notebooks and scripts in Python that are used for our tool. EnhancerTracker uses an ensemble of deep convolutional neural network classifiers. These classifiers are trained on the FANTOM5 Project dataset (transcribed human enhancers). 
 
 ## Files
@@ -88,6 +99,8 @@ Download Red (Girgis, H.Z. Red: an intelligent, rapid, accurate tool for detecti
 
 Download BEDtools (Quinlan, A. R., & Hall, I. M. (2010). BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics, 26(6), 841-842.) 
 
+EnhancerTracker requires a tensorflow with gpu support.  
+
 ## To Run Tool
 
 1. Navigate to the folder EnhancerTracker was cloned and perform the following command
@@ -95,8 +108,7 @@ Download BEDtools (Quinlan, A. R., & Hall, I. M. (2010). BEDTools: a flexible su
 2. Unzip "Models_29.zip" and make sure it contains 29 models.
 
 3. Run EnhancerTracker.py:
-   > 
-
+   > python3 EnhancerTracker.py two_enhancers.fa sequence.fa output_folder/
 
 ## To Run our Tests: 
 1. Store FANTOM5 dataset in Data/FANTOM as F5.hg38.enhancers.expression.usage.matrix
