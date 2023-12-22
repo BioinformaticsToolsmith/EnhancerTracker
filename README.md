@@ -90,12 +90,6 @@ Our tool EnhancerTracker.
 Takes in a triplet permutation generated from TripletConfidenceGenerator.ipynb. 
 Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
 
-The output folder contains three files: 
-(i) 600_segments.bed: coordinates of the input segments,
-(ii) 600_overlapping.bed: all predictions of all the segments that were classified as enhancers (many of them are overlapping), and
-(iii) 600_enhancers.bed: non-redunant segments with the highest confidence scores.
-
-
 ## Requirements
 Download FANTOM5 dataset https://zenodo.org/record/556775
 
@@ -109,12 +103,17 @@ EnhancerTracker requires a tensorflow with gpu support.
 
 ## To Run Tool
 
-1. Navigate to the folder EnhancerTracker was cloned and perform the following command
+1. Navigate to the folder where EnhancerTracker was cloned and perform the following commands.
 
 2. Unzip "Models_29.zip" and make sure it contains 29 models.
 
 3. Run EnhancerTracker.py:
    > python3 EnhancerTracker.py two_enhancers.fa sequence.fa output_folder/
+
+The output folder contains three files: 
+(i) 600_segments.bed: coordinates of the input segments,
+(ii) 600_overlapping.bed: all segments that were classified as enhancers (many of them are overlapping), and
+(iii) 600_enhancers.bed: non-redunant segments with the highest confidence scores.
 
 ## To Run our Tests: 
 1. Store FANTOM5 dataset in Data/FANTOM as F5.hg38.enhancers.expression.usage.matrix
