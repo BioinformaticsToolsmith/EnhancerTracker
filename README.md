@@ -90,6 +90,12 @@ Our tool EnhancerTracker.
 Takes in a triplet permutation generated from TripletConfidenceGenerator.ipynb. 
 Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
 
+The output folder contains three files: 
+(i) 600_segments.bed: coordinates of the input segments,
+(ii) 600_overlapping.bed: all predictions of all the segments that were classified as enhancers (many of them are overlapping), and
+(iii) 600_enhancers.bed: non-redunant segments with the highest confidence scores.
+
+
 ## Requirements
 Download FANTOM5 dataset https://zenodo.org/record/556775
 
