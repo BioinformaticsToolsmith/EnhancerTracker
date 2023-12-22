@@ -9,11 +9,11 @@ import nets
 import random
 from loaders import PremadeTripletClassifierSequence
 import numpy as np
-import math
 import sys 
 import pickle as pk
 import gc
-
+# from tensorflow.keras.utils import get_custom_objects
+# get_custom_objects().update({'Specificity': nets.Specificity})
 
 def exponential_decay_fn(epoch, lr):
     '''
@@ -276,12 +276,40 @@ class TripletClassifierEnsemble:
         prediction: predicted labels
         y         : true labels
         """
+
+        # accuracy = nets.crm_accuracy(y, prediction)
+        # specificity = nets.crm_specificity(y, prediction)
+        # recall = nets.crm_recall(y, prediction)
+        # precision = nets.crm_precision(y, prediction)
+        # f1 = nets.crm_f1_score(y, prediction)
+        prediction = tf.cast(tf.math.round(prediction), tf.int32)
+        y = tf.cast(y, tf.int32)
         
-        accuracy = nets.crm_accuracy(y, prediction)
-        specificity = nets.crm_specificity(y, prediction)
-        recall = nets.crm_recall(y, prediction)
-        precision = nets.crm_precision(y, prediction)
-        f1 = nets.crm_f1_score(y, prediction)
+        c = 0.0
+        tp = 0.0
+        fp = 0.0
+        tn = 0.0
+        fn = 0.0
+        for i in range(len(y)):
+            if y[i] == 1:
+                if prediction[i] == 1:
+                    tp += 1
+                    c += 1
+                else:
+                    fn += 1
+            else:
+                if prediction[i] == 1:
+                    fp += 1
+                else:
+                    tn += 1
+                    c += 1
+                    
+            
+        accuracy = c / (len(y) + sys.float_info.epsilon)
+        specificity = tn / (tn + fp + sys.float_info.epsilon)
+        recall = tp / (tp + fn + sys.float_info.epsilon)
+        precision = tp / (tp + fp + sys.float_info.epsilon)
+        f1 = (2 * recall * precision) / (recall + precision + sys.float_info.epsilon)
         
         print("Accuracy:", accuracy)
         print("Specificity:", specificity)
@@ -328,6 +356,9 @@ class TripletClassifierEnsemble:
             else:
                 def predict_model(m, x):
                     return keras.models.load_model(m.get_path(self.out_dir), custom_objects = self.custom_objects).predict(x, verbose = verbose).reshape(-1)
+            # else:
+            #     def predict_model(m, x):
+            #         return tf.cast(tf.math.round(keras.models.load_model(m.get_path(self.out_dir), custom_objects = self.custom_objects).predict(x, verbose = verbose).reshape(-1)), tf.uint8)
 
             for i, m in enumerate(use_list):
                 #p = tf.cast(tf.math.round(predict_model(m, x)), tf.uint8)
@@ -397,6 +428,62 @@ class TripletClassifierEnsemble:
                
         return self.calculate_metrics(prediction, y), confidence
     
+#     def predict_from(self, prediction_list, threshold = 0.55, is_merit = False):
+        
+#         use_count = len(prediction_list)
+#         vote_array = np.zeros((len(prediction_list[0]), use_count))
+#         consensus = np.zeros(len(vote_array))
+#         confidence_array = np.zeros(len(vote_array))
+#         if use_count > 1:
+            
+#             for i in range(use_count):
+#                 vote_array[:, i] = tf.math.round(prediction_list[i])
+                
+                
+#             if is_merit:
+
+#                 # Creating our consensus from the models
+#                 consensus = np.zeros(len(vote_array))
+#                 total_weight = sum([m.vote_weight for m in self.model_list[:use_count]])
+#                 for instance in range(len(vote_array)):
+#                     c = 0
+#                     for j, vote in enumerate(vote_array[instance, :]): 
+#                         c += (vote * self.model_list[j].vote_weight)
+                    
+#                     confidence = c/total_weight
+#                     confidence_array[instance] = confidence
+                    
+#                     if confidence >= threshold:
+#                         consensus[instance] = 1
+                    
+#             else:
+
+#                 # Creating our consensus from the models
+#                 for instance in range(len(vote_array)):
+#                     c = 0
+#                     for vote in vote_array[instance, :]:  # corrected here
+#                         c += vote
+                    
+#                     confidence =  c/use_count
+#                     confidence_array[instance] = confidence
+                    
+#                     if confidence >= threshold:  # corrected here
+#                         consensus[instance] = 1
+                        
+#         # Otherwise, just use 1 model's prediction
+#         elif use_count == 1:
+#             consensus = tf.math.round(prediction_list[0])
+#             confidence_array = [-1] * len(confidence_array) 
+            
+#         else:
+#             raise RuntimeError(f"Use count cannot be zero! {use_count}")
+
+#         return consensus, confidence_array
+    
+#     def evaluate_from(self, prediction_list, y, threshold = 0.55, is_merit = False, is_loaded = False):
+#         prediction, confidence = self.predict_from(prediction_list, threshold = threshold, is_merit = is_merit)
+        
+#         return self.calculate_metrics(prediction, y), confidence
     
     def predict_raw(self, x, i, is_loaded = False):
         """
@@ -439,7 +526,9 @@ class TripletClassifierEnsemble:
                 self.model_list[c - 1] = pk.load(f)
             
             
-
+        
+        # with open(f'{path}/model_info.pickle', 'rb') as input:
+        #     self.model_list = pk.load(input)
             
             
         
@@ -490,3 +579,6 @@ class TripletClassifierEnsemble:
 
                 with open(f'{self.model_list[i].get_path(self.out_dir)}/model_info.pickle', 'wb') as f:
                     pk.dump(self.model_list[i], f)
+
+        # with open(f'{self.out_dir}/model_info.pickle', 'wb') as f:
+        #     pk.dump(self.model_list, f)
