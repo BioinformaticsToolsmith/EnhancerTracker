@@ -87,10 +87,10 @@ Triplet permutations use a 10,000 bp region and non-permutated triplets use a 10
 
 -EnhancerTracker.py:
 Our tool EnhancerTracker.
-Takes in a triplet permutation generated from TripletConfidenceGenerator.ipynb. 
-Outputs predicted enhancer regions, confidence scores for regions, and segment regions for each window size.
+Takes in two enhancers and a sequence to scan.
+Outputs all segments that were classified as enhancers, coordinates of the input segments, and non-redunant segments with the highest confidence scores.
 
-## Requirements
+## Requirements:
 Download FANTOM5 dataset https://zenodo.org/record/556775
 
 Download human genome dataset ... 
@@ -101,7 +101,7 @@ Download BEDtools (Quinlan, A. R., & Hall, I. M. (2010). BEDTools: a flexible su
 
 EnhancerTracker requires a tensorflow with gpu support.  
 
-## To Run Tool
+## To Run Tool:
 
 1. Navigate to the folder where EnhancerTracker was cloned and perform the following commands.
 
